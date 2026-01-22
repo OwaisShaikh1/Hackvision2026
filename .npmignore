@@ -3,3 +3,9 @@ examples/
 .github/
 package-lock.json
 node_modules/
+CHANGELOG.md
+demo/
+.gitignore
+.vscode/
+
+
