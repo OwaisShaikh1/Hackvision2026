@@ -12,14 +12,14 @@
 
   SmartOffline.init({
     pages: ["/demo/index.html","/demo/api/profile.json"],
-    apis: ["https://jsonplaceholder.typicode.com/posts"],
+    apis: ["https://jsonplaceholder.typicode.com/posts/2"],
     debug: true
   });
 
- fetch("https://jsonplaceholder.typicode.com/posts")
+ fetch("https://jsonplaceholder.typicode.com/posts/2")
   .then(res => res.json())
   .then(data => {
-    document.body.innerHTML += `<pre>${data}</pre>`;
+    document.body.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
   })
   .catch(err => {
     document.body.innerHTML += "<p>API failed</p>";
