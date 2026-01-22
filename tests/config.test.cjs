@@ -1,4 +1,4 @@
-const { buildConfig } = require('../src/config');
+const { buildConfig } = require('../src/config.cjs');
 
 describe('buildConfig', () => {
   test('defaults are set', () => {

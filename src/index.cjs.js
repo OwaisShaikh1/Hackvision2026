@@ -1,15 +1,8 @@
 /**
- * SmartOffline SDK
- *
- * Priority config options:
- * - frequencyThreshold: number of accesses before resource is considered "frequent" (default 3)
- * - recencyThreshold: milliseconds within which resource is considered "recent" (default 24h)
- * - maxResourceSize: max bytes to cache per resource; larger resources skipped (default Infinity)
- * - networkQuality: 'auto' | 'fast' | 'slow' — affects caching aggressiveness (default 'auto')
- * - significance: { [urlPattern]: 'high' | 'normal' | 'low' } — manual priority overrides
+ * SmartOffline SDK (CommonJS version)
  */
 function init(config = {}) {
-  if (!("serviceWorker" in navigator)) {
+  if (typeof navigator === 'undefined' || !("serviceWorker" in navigator)) {
     console.warn("Service Workers not supported");
     return;
   }
@@ -49,10 +42,7 @@ function init(config = {}) {
         });
 
         if (sdkConfig.debug) {
-          console.log(
-            "[SmartOffline] Config sent after controllerchange:",
-            sdkConfig
-          );
+          console.log("[SmartOffline] Config sent after controllerchange:", sdkConfig);
         }
       }
     });
@@ -61,5 +51,5 @@ function init(config = {}) {
 
 const SmartOffline = { init };
 
-export { SmartOffline };       // ✅ named export
-export default SmartOffline;  // ✅ default export
+module.exports = { SmartOffline };
+module.exports.default = SmartOffline;
