@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Learning Hub – Smart Offline SDK Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Offline Learning Hub</h1>
+  <p>For rural students & communities – educational content works even without internet.</p>
+  
+  <p id="network-status">Network: Checking...</p>
+  <p id="cache-indicator" style="color: #e67e22; font-weight: bold; display: none;">
+    Offline Mode – Showing cached content
+  </p>
+
+  <div id="lessons-container">Loading lessons...</div>
+
+  <footer style="margin-top: 40px; font-size: 0.9em; color: #666;">
+    Hackathon Demo • Reload page after going offline (DevTools → Network → Offline) to test • Check console for SDK logs
+    <br><small>Tip: Comment/uncomment the SDK script tag below to test with/without offline caching</small>
+  </footer>
+
+  <!-- ========================================
+       REQUIRED: Smart Offline SDK Integration
+       Comment/uncomment to enable/disable
+       ======================================== -->
+  <script src="smart-offline-init.js"></script>
+
+</body>
+</html>
