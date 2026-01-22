@@ -1,4 +1,4 @@
-const { HackvisionClient } = require('../src/sdk');
+const { HackvisionClient } = require('../src/sdk/index.cjs');
 
 test('echo returns message', async () => {
   const c = new HackvisionClient();

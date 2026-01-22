@@ -1,4 +1,4 @@
-const { isHighPriority, getEffectiveNetworkQuality, shouldSkipBySize } = require('../src/priority');
+const { isHighPriority, getEffectiveNetworkQuality, shouldSkipBySize } = require('../src/priority.cjs');
 
 describe('priority utilities', () => {
   test('isHighPriority returns false when no usage', () => {
