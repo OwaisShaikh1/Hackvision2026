@@ -1,6 +1,6 @@
 {
   "name": "@soham20/smart-offline-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Smart offline-first JavaScript SDK with intelligent caching for web applications",
   "main": "src/sdk/index.js",
   "scripts": {

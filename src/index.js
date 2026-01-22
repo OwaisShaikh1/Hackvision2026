@@ -19,20 +19,13 @@ function init(config = {}) {
     apis: config.apis || [],
     debug: config.debug || false,
 
-    // Priority tuning
-    frequencyThreshold: config.frequencyThreshold ?? 3,
-    recencyThreshold: config.recencyThreshold ?? 24 * 60 * 60 * 1000, // 24h default
-    maxResourceSize: config.maxResourceSize ?? Infinity,
-    networkQuality: config.networkQuality ?? "auto", // 'auto' | 'fast' | 'slow'
-    significance: config.significance ?? {}, // { urlPattern: 'high' | 'normal' | 'low' }
+    
   };
 
-  navigator.serviceWorker.register("/smart-offline-sw.js").then((registration) => {
+  navigator.serviceWorker.register("/smart-offline-sw.js").then(() => {
     console.log("Smart Offline Service Worker registered");
 
-    // Wait for SW to be ready before sending config
     navigator.serviceWorker.ready.then(() => {
-      // Send config to active service worker
       if (navigator.serviceWorker.controller) {
         navigator.serviceWorker.controller.postMessage({
           type: "INIT_CONFIG",
@@ -45,7 +38,6 @@ function init(config = {}) {
       }
     });
 
-    // Handle new SW taking control (on first install)
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       if (navigator.serviceWorker.controller) {
         navigator.serviceWorker.controller.postMessage({
@@ -54,11 +46,17 @@ function init(config = {}) {
         });
 
         if (sdkConfig.debug) {
-          console.log("[SmartOffline] Config sent after controllerchange:", sdkConfig);
+          console.log(
+            "[SmartOffline] Config sent after controllerchange:",
+            sdkConfig
+          );
         }
       }
     });
   });
 }
 
-export const SmartOffline = { init };
+const SmartOffline = { init };
+
+export { SmartOffline };       // ✅ named export
+export default SmartOffline;  // ✅ default export
