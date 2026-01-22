@@ -1,6 +1,6 @@
 {
   "name": "smart-sdk-offline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@soham20/smart-offline-sdk": "^0.1.0"
+    "@soham20/smart-offline-sdk": "^0.1.1"
   }
 }
