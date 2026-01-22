@@ -2,11 +2,19 @@ const CACHE_NAME = "smart-offline-cache-v1";
 
 /**
  * SDK configuration received from SmartOffline.init()
+ * Includes priority tuning knobs.
  */
 let SDK_CONFIG = {
   pages: [],
   apis: [],
   debug: false,
+
+  // Priority tuning defaults
+  frequencyThreshold: 3,
+  recencyThreshold: 24 * 60 * 60 * 1000, // 24h
+  maxResourceSize: Infinity,
+  networkQuality: "auto", // 'auto' | 'fast' | 'slow'
+  significance: {}, // { urlPattern: 'high' | 'normal' | 'low' }
 };
 
 /**
@@ -78,18 +86,41 @@ function getUsage(url) {
 }
 
 /**
- * Decide priority based on real usage
+ * Decide priority based on real usage and developer-tuned config
  */
-function isHighPriority(usage) {
+function isHighPriority(usage, url) {
+  // Manual significance override
+  for (const pattern in SDK_CONFIG.significance) {
+    if (url.includes(pattern)) {
+      const sig = SDK_CONFIG.significance[pattern];
+      if (sig === "high") return true;
+      if (sig === "low") return false;
+      // 'normal' falls through to dynamic logic
+    }
+  }
+
   if (!usage) return false;
 
-  const FREQUENT_THRESHOLD = 3;
-  const RECENT_THRESHOLD = 24 * 60 * 60 * 1000; // 24h
-
-  const frequent = usage.count >= FREQUENT_THRESHOLD;
-  const recent = Date.now() - usage.lastAccessed <= RECENT_THRESHOLD;
+  const frequent = usage.count >= SDK_CONFIG.frequencyThreshold;
+  const recent = Date.now() - usage.lastAccessed <= SDK_CONFIG.recencyThreshold;
 
   return frequent || recent;
+}
+
+/**
+ * Detect effective network quality (uses Navigator.connection if available)
+ */
+function getEffectiveNetworkQuality() {
+  if (SDK_CONFIG.networkQuality !== "auto") {
+    return SDK_CONFIG.networkQuality; // developer override
+  }
+  // Use Network Information API if available
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (conn) {
+    const dominated = ["slow-2g", "2g", "3g"];
+    if (dominated.includes(conn.effectiveType)) return "slow";
+  }
+  return "fast";
 }
 
 /**
@@ -143,9 +174,35 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     fetch(request)
-      .then((response) => {
+      .then(async (response) => {
         // Network success
         trackUsage(request.url);
+
+        // Check resource size limit
+        const contentLength = response.headers.get("content-length");
+        const size = contentLength ? parseInt(contentLength, 10) : 0;
+        if (size > SDK_CONFIG.maxResourceSize) {
+          if (SDK_CONFIG.debug) {
+            console.log(
+              `[SmartOffline] Skipped caching (size ${size} > ${SDK_CONFIG.maxResourceSize}):`,
+              request.url
+            );
+          }
+          return response;
+        }
+
+        // Network quality aware caching
+        const netQuality = getEffectiveNetworkQuality();
+        if (netQuality === "slow" && !isHighPriority(null, request.url)) {
+          // On slow network, skip caching low priority resources proactively
+          if (SDK_CONFIG.debug) {
+            console.log(
+              `[SmartOffline] Skipped caching (slow network, not high priority):`,
+              request.url
+            );
+          }
+          return response;
+        }
 
         const clone = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
@@ -166,7 +223,7 @@ self.addEventListener("fetch", (event) => {
         trackUsage(request.url);
 
         return getUsage(request.url).then((usage) => {
-          const highPriority = isHighPriority(usage);
+          const highPriority = isHighPriority(usage, request.url);
 
           if (SDK_CONFIG.debug) {
             console.log(
