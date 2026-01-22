@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Offline SDK Demo</title>
+</head>
+<body>
+  <h1>Smart Offline SDK Demo</h1>
+  <p>If this page reloads offline, the SDK works.</p>
+
+  <script type="module">
+  import { SmartOffline } from "../src/index.js";
+
+  SmartOffline.init({
+    pages: ["/demo/index.html","/demo/api/profile.json"],
+    apis: ["https://jsonplaceholder.typicode.com/posts"],
+    debug: true
+  });
+
+ fetch("https://jsonplaceholder.typicode.com/posts")
+  .then(res => res.json())
+  .then(data => {
+    document.body.innerHTML += `<pre>${data}</pre>`;
+  })
+  .catch(err => {
+    document.body.innerHTML += "<p>API failed</p>";
+  });
+
+</script>
+
+
+</body>
+</html>
