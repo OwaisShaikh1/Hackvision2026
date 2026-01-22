@@ -1,0 +1,210 @@
+.services-page {
+  padding: 0;
+}
+
+.services-section {
+  margin-bottom: 3rem;
+}
+
+.services-section h3 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.applications-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.application-card {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.application-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.app-icon {
+  font-size: 2.5rem;
+}
+
+.app-content {
+  flex: 1;
+}
+
+.app-content h4 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.app-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.app-department {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.app-details {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.app-progress {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.app-status {
+  padding: 0.3rem 0.9rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.app-status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.app-status.in-review {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.app-status.pending-payment {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.app-status.submitted {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+.app-date {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.btn-view {
+  padding: 0.6rem 1.5rem;
+  background: #f3f4f6;
+  color: #4b5563;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-view:hover {
+  background: #e5e7eb;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card h4 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin: 0;
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.service-list li {
+  padding: 0.5rem 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.service-list li:last-child {
+  border-bottom: none;
+}
+
+.service-stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 0.5rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-apply {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: all 0.2s;
+}
+
+.btn-apply:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+@media (max-width: 768px) {
+  .application-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .app-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}

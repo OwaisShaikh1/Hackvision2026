@@ -1,0 +1,117 @@
+.network-monitor {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.monitor-header h3 {
+  font-size: 1.2rem;
+  color: #1f2937;
+  margin: 0;
+}
+
+.refresh-btn-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.refresh-btn-small:hover {
+  background: #e5e7eb;
+  transform: rotate(90deg);
+}
+
+.performance-info {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.perf-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.perf-row:last-child {
+  border-bottom: none;
+}
+
+.perf-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.perf-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.perf-value-small {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.monitor-info {
+  background: #eff6ff;
+  border-left: 3px solid #3b82f6;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.monitor-info strong {
+  color: #1e40af;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.monitor-info ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #1e40af;
+}
+
+.monitor-info li {
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
+
+.clear-cache-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ef4444;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.clear-cache-btn:hover:not(:disabled) {
+  background: #dc2626;
+  transform: scale(1.02);
+}
+
+.clear-cache-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

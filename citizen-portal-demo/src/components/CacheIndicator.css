@@ -1,0 +1,167 @@
+.cache-indicator {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.indicator-header h3 {
+  font-size: 1.2rem;
+  color: #1f2937;
+  margin: 0;
+}
+
+.cache-count {
+  padding: 0.3rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.cache-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.overview-stat {
+  text-align: center;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.stat-number.cached {
+  color: #10b981;
+}
+
+.stat-number.non-cached {
+  color: #f59e0b;
+}
+
+.stat-text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.api-section {
+  margin-bottom: 1.5rem;
+}
+
+.api-section h4 {
+  font-size: 0.95rem;
+  color: #1f2937;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+}
+
+.api-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.api-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.api-item.cached {
+  background: #ecfdf5;
+  border-left: 3px solid #10b981;
+}
+
+.api-item.non-cached {
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+}
+
+.api-icon {
+  font-size: 1.3rem;
+}
+
+.api-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.api-name {
+  font-size: 0.85rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.api-endpoint {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.priority-badge.high {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.priority-badge.normal {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.reason-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.cache-check {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.sdk-info {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sdk-info strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.sdk-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
