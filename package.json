@@ -2,16 +2,20 @@
   "name": "@soham20/smart-offline-sdk",
   "version": "0.1.0",
   "description": "Smart offline-first JavaScript SDK with intelligent caching for web applications",
-  "main": "src/sdk/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
   "scripts": {
     "test": "jest",
     "build": "echo \"no build step\"",
     "lint": "echo \"no lint configured\""
   },
-  "keywords": [],
+  "keywords": ["offline", "pwa", "service-worker", "cache"],
   "author": "Atif Sayed",
   "license": "MIT",
-  "type": "commonjs",
   "devDependencies": {
     "jest": "^29.0.0"
   }
