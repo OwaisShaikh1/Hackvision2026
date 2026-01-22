@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Basic First Aid in Emergencies",
+    "content": "1. Check the scene for safety.\n2. Call for help (108 in India).\n3. Control bleeding by applying direct pressure.\nImportant during floods or accidents when help is delayed.",
+    "image": "https://img.freepik.com/free-vector/first-aid-kit-concept-illustration_114360-1055.jpg",
+    "significance": "high"
+  },
+  {
+    "id": 2,
+    "title": "Water Purification Methods (SODIS)",
+    "content": "Fill a clear PET bottle with water.\nLeave it in direct sunlight for 6 hours (or 2 days if cloudy).\nUV rays + heat kill pathogens.\nCritical in rural areas without clean water.",
+    "image": "https://img.freepik.com/free-vector/hand-drawn-water-purification-infographic_23-2149416897.jpg",
+    "significance": "high"
+  },
+  {
+    "id": 3,
+    "title": "Racism Awareness",
+    "content": "Racism is the belief that different races are inherently superior or inferior. \nIt can lead to discrimination and prejudice in society.",
+    "image": "https://img.freepik.com/free-vector/crop-rotation-cycle-infographic_23-2148584908.jpg",
+    "significance": "medium"
+  }
+]
